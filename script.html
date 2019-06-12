@@ -1,0 +1,69 @@
+<html>
+<head></head>
+
+<body>
+  <script language="JavaScript">
+
+
+
+
+
+    function ubezpEmeryt(q)
+    {
+      var w=q*(9.76/100);
+      //document.write("Ubezpieczenie emerytalne: "+w+" zł"+"<br />");
+      return w;
+    }
+
+  function ubezpRent(q)
+  {
+    var w=q*(1.5/100);
+    //document.write("Ubezpieczenie rentowe: "+w+" zł"+"<br />");
+    return w;
+  }
+
+  function ubezpChorob(q)
+  {
+   var w=q*(2.45/100);
+   //document.write("Ubezpieczenie chorobowe: "+w+" zł"+"<br />");
+   return w;
+  }
+
+  function ubezpZdrow(q)
+  {
+    var w=((q-(ubezpChorob(q)+ubezpRent(q)+ubezpEmeryt(q)))*(9/100));
+    return w;
+  }
+
+  function zalPit(q)
+  {
+    var w=q-(ubezpChorob(q)+ubezpRent(q)+ubezpEmeryt(q));
+    var up=w-111.25;
+    var c;
+    var d;
+    
+      d=(w*(7.75/100));
+      c=(up*18/100)-46.33-d;
+
+    return c;
+  }
+
+  function toString(q)
+  {
+    document.write("Ubezpieczenie zdrowotne: "+ubezpZdrow(q).toFixed(2)+" zł"+"<br />");
+    document.write("Ubezpieczenie emerytalne: "+ubezpEmeryt(q).toFixed(2)+" zł"+"<br />");
+    document.write("Ubezpieczenie rentowe: "+ubezpRent(q).toFixed(2)+" zł"+"<br />");
+    document.write("Ubezpieczenie chorobowe: "+ubezpChorob(q).toFixed(2)+" zł"+"<br />");
+    document.write("Zaliczka pit:"+zalPit(q).toFixed(0)+" zł"+"<br />");
+    document.write("Kwota netto: "+(q-ubezpZdrow(q).toFixed(2)-ubezpEmeryt(q).toFixed(2)-ubezpRent(q).toFixed(2)-ubezpChorob(q).toFixed(2)-zalPit(q).toFixed(0)).toFixed(2)+" zł"+"<br />");
+  }
+
+  var u=prompt("Podaj kwotę brutto");
+toString(u);
+
+
+</script>
+
+</body>
+
+</html>
